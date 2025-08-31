@@ -1,17 +1,15 @@
 services:
   terminal:
-    image: sh3b0/terminal
+    image: sh3b0/terminal:v2
     container_name: terminal
     ports: [127.0.0.1:10081:10081]
-    # network_mode: host
     volumes:
       - ./zellij.kdl:/home/dev/.config/zellij/config.kdl
       - /var/run/docker.sock:/var/run/docker.sock
   renderer:
-    image: sh3b0/renderer
+    image: sh3b0/renderer:v2
     container_name: renderer
     ports: [127.0.0.1:10082:10082]
-    # network_mode: host
     volumes:
       - ./content:/opt/renderer/workshop/content
     depends_on:
@@ -20,27 +18,26 @@ services:
     image: nginx:alpine
     container_name: nginx
     ports: [127.0.0.1:8080:8080]
-    # network_mode: host
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - renderer
       - terminal
-  windows:
-    image: dockurr/windows
-    container_name: windows
-    environment:
-      VERSION: "7"
-    devices:
-      - /dev/kvm
-      - /dev/net/tun
-    cap_add:
-      - NET_ADMIN
-    ports:
-      - 8006:8006
-      - 3389:3389/tcp
-      - 3389:3389/udp
-    volumes:
-      - ./windows:/storage
-    restart: always
-    stop_grace_period: 2m
+  # windows:
+  #   image: dockurr/windows
+  #   container_name: windows
+  #   environment:
+  #     VERSION: "https://github.com/DEPI-DevOps/Demo/releases/download/W10/W10.iso"
+  #   devices:
+  #     - /dev/kvm
+  #     - /dev/net/tun
+  #   cap_add:
+  #     - NET_ADMIN
+  #   ports:
+  #     - 8006:8006
+  #     - 3389:3389/tcp
+  #     - 3389:3389/udp
+  #   volumes:
+  #     - ./windows:/storage
+  #   restart: always
+  #   stop_grace_period: 2m
