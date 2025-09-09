@@ -1,4 +1,4 @@
-# Lab 3
+# Lab 3 - Malware Analysis
 
 1. Ensure you have docker and docker compose installed
 
@@ -10,13 +10,13 @@
 2. Clone this repo
 
     ```bash
-    git clone https://github.com/FIS-F25/lab2
+    git clone https://github.com/FIS-F25/lab3
     ```
 
 3. Change into the project directory
 
     ```bash
-    cd lab2
+    cd lab3
     ```
 
 4. Fix permissions of the recordings directory if needed
