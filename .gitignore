@@ -1,3 +1,5 @@
 solutions/
 windows/
-Win10.iso
+qemu/
+config/
+*.iso
