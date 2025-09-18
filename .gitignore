@@ -3,3 +3,5 @@ windows/
 qemu/
 config/
 *.iso
+*.cast
+
